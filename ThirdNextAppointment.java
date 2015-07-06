@@ -20,7 +20,7 @@
  * @author rrusk
  */
 
-package thirdnextappointment;
+//package thirdnextappointment;
 
 // Import required packages
 import java.io.File;

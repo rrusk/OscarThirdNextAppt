@@ -11,4 +11,4 @@ if [ -f ThirdNextAppointment.class ]; then
   rm ThirdNextAppointment.class
 fi
 javac ThirdNextAppointment.java
-java -cp ".:mysql-connector-java-5.1.28.jar" ThirdNextAppointment
+java -cp ".:mysql-connector-java-3.0.11.jar" ThirdNextAppointment

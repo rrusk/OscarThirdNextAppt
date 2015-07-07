@@ -67,6 +67,26 @@ public class ThirdNextAppointment {
         }
         return conn;
     }
+    
+    static private String getProviderInfo(Connection conn, String provider) {
+        String providerSQL = "select practitionerNo, ohip_no from provider where provider_no=" + provider;
+        ResultSet rs;
+        Statement stmt;
+        String providerInfo = null;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(providerSQL);
+            if (rs.next()) {
+                String cpsId = rs.getString("practitionerNo");
+                String mspNo = rs.getString("ohip_no");
+                providerInfo = "\"cpsid\":\"" + cpsId + "\", \"msp\":\"" + mspNo + "\"";
+            }
+        } catch (SQLException se) {
+            se.printStackTrace(System.out);
+            System.err.println(providerSQL);
+        }
+        return providerInfo;
+    }
 
     /**
      * Wrapper to method from
@@ -202,11 +222,13 @@ public class ThirdNextAppointment {
 
         // String sql = scheduleSQL + ";\n " + apptSQL;
         // System.out.println("sql: " + sql);
-        return makeClinicianJson(numDays, dateFrom, schedDate, provider);
+        String providerInfo = getProviderInfo(conn, provider);
+        
+        return makeClinicianJson(numDays, dateFrom, schedDate, provider, providerInfo);
     }
 
-    static private String makeClinicianJson(int numDays, String requestDate, String thirdDate, String providerList) {
-        return "{\"clinician\":\"" + providerList + "\", " + "\"3rdnext\":" + numDays + "}";
+    static private String makeClinicianJson(int numDays, String requestDate, String thirdDate, String provider, String providerInfo) {
+        return "{\"clinician\":\"" + provider + "\", " + providerInfo + ", " + "\"3rdnext\":" + numDays + "}";
     }
     
     static boolean isValidParameter(String s) {

@@ -10,5 +10,8 @@ javac ReportDate.java
 if [ -f ThirdNextAppointment.class ]; then
   rm ThirdNextAppointment.class
 fi
+if [ ! -d "./reports" ]; then
+  mkdir reports
+fi
 javac ThirdNextAppointment.java
 java -cp ".:mysql-connector-java-3.0.11.jar" ThirdNextAppointment

@@ -8,4 +8,4 @@ An example of how to compile and execute the program (after setting appropriate 
  * javac ThirdNextAppointment.java
  * java -cp ".:mysql-connector-java-5.1.28.jar" ThirdNextAppointment
  
-The generateReport method is based on code from Oscar's src/main/java/oscar/oscarReport/reportByTemplate/ThirdApptTimeReporter.java written by Randy Jonasz [mailto:rjonasz@gmail.com]. Some code is also borrowed from http://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm
+The generateReport method is based on code from Oscar's http://sourceforge.net/p/oscarmcmaster/oscar/ci/master/tree/src/main/java/oscar/oscarReport/reportByTemplate/ThirdApptTimeReporter.java written by Randy Jonasz [mailto:rjonasz@gmail.com]. Some code is also borrowed from http://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm

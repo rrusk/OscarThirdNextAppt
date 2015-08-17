@@ -1,0 +1,28 @@
+<report title="Time to 3rd Appointment" description="Calculates number of
+calendar days between request date and 3rd available appointment with
+specified schedule code e.g. O, o, 1, 2, 3, 4 or 6" active="1">
+
+   <type>thirdAppt</type>
+   <param id="provider_no" type="textlist" description="comma separated
+provider numbers to search">
+   </param>
+
+    <param id="prov" type="list" description="Provider Number">
+      <param-query>select provider_no, CONCAT(last_name, ', ', first_name,
+' (', provider_no, ')') from provider where status='1' order by
+last_name;</param-query>
+   </param>
+
+   <param id="apptLength" type="text" description="Length of Appointment
+Required (mins)">
+   </param>
+
+   <param id="scheduleSymbols" type="textlist" description="Schedule
+template symbols to search in">
+   </param>
+
+   <param id="date_from" type="date" description="Date Appointment
+Requested">
+   </param>
+
+</report>
